@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-      - gh-oage
+      - main
     paths-ignore:
       - .gitignore
       - README.md
