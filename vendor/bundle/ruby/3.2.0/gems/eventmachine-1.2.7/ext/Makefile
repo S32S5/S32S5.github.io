@@ -85,12 +85,12 @@ debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wundef
 cppflags = 
 CCDLFLAGS = 
-CFLAGS   = $(CCDLFLAGS) -O3 -fno-fast-math -fstack-protector-strong $(ARCH_FLAG)
-INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
+CFLAGS   = $(CCDLFLAGS) -O3 -fno-fast-math -fstack-protector-strong  $(ARCH_FLAG)
+INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/ucrt64/include
 DEFS     = -D_FILE_OFFSET_BITS=64
-CPPFLAGS = -DBUILD_FOR_RUBY -DHAVE_RB_THREAD_CALL_WITHOUT_GVL -DHAVE_RB_THREAD_FD_SELECT -DHAVE_TYPE_RB_FDSET_T -DHAVE_RB_WAIT_FOR_SINGLE_FD -DHAVE_RB_TIME_NEW -DOS_WIN32 -DHAVE_CLOCK_GETTIME -DHAVE_CONST_CLOCK_MONOTONIC -DHAVE_MAKE_PAIR -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT $(DEFS) $(cppflags)
-CXXFLAGS = $(CCDLFLAGS) -march=nocona -msahf -mtune=generic -O2 -pipe -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector-strong $(ARCH_FLAG)
-ldflags  = -L. -pipe -s -fstack-protector-strong -Wl,--no-as-needed
+CPPFLAGS = -DHAVE_OPENSSL_SSL_H -DHAVE_OPENSSL_ERR_H -DWITH_SSL -DBUILD_FOR_RUBY -DHAVE_RB_THREAD_CALL_WITHOUT_GVL -DHAVE_RB_THREAD_FD_SELECT -DHAVE_TYPE_RB_FDSET_T -DHAVE_RB_WAIT_FOR_SINGLE_FD -DHAVE_RB_TIME_NEW -DOS_WIN32 -DHAVE_CLOCK_GETTIME -DHAVE_CONST_CLOCK_MONOTONIC -DHAVE_MAKE_PAIR -D__USE_MINGW_ANSI_STDIO=1 -DFD_SETSIZE=2048 -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT $(DEFS) $(cppflags)
+CXXFLAGS = $(CCDLFLAGS) -march=nocona -msahf -mtune=generic -O2 -pipe -Wp,-D_FORTIFY_SOURCE=2 -fstack-protector-strong  $(ARCH_FLAG)
+ldflags  = -L. -pipe -s -fstack-protector-strong -Wl,--no-as-needed -L/ucrt64/lib
 dldflags = -pipe -s -fstack-protector-strong -Wl,--enable-auto-image-base,--enable-auto-import $(DEFFILE)
 ARCH_FLAG = -m64
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -139,7 +139,7 @@ extout =
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED)  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  
+LIBS = $(LIBRUBYARG_SHARED)  -lssl -lcrypto -lcrypto -lssl -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  
 ORIG_SRCS = binder.cpp cmain.cpp ed.cpp em.cpp kb.cpp page.cpp pipe.cpp rubymain.cpp ssl.cpp
 SRCS = $(ORIG_SRCS) 
 OBJS = binder.o cmain.o ed.o em.o kb.o page.o pipe.o rubymain.o ssl.o
