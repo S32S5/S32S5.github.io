@@ -3,6 +3,7 @@
 .jekyll-cache
 .sass-cache
 _site
+Gemfile.lock
 _site/
 .sass-cache/
 .jekyll-cache/
