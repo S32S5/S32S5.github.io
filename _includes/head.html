@@ -1,107 +1,40 @@
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f7f7">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta
-    name="viewport"
-    content="width=device-width, user-scalable=no initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
-  >
+    <html lang="it-IT">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {%- capture seo_tags -%}
-    {% seo title=false %}
-  {%- endcapture -%}
+    <title>
+        {% if page.title == "Home" %}
+            {{ site.title }} | {{ site.description }}
+        {% else %}
+            {{ page.title }} | {{ site.title }}
+      {% endif %}
+    </title>
+    <meta name="description" content="
+     {% if page.description %}{{ page.description }}
+     {% else %}{{ site.description }}
+    {% endif %}">
 
-  <!-- Setup Open Graph image -->
+    <link rel="icon" href="{{"/favicon.ico" | absolute_url }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{"/favicon.ico" | absolute_url }}" type="image/x-icon">
 
-  {% if page.image %}
-    {% assign src = page.image.path | default: page.image %}
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
 
-    {% unless src contains '://' %}
-      {%- capture img_url -%}
-        {% include media-url.html src=src subpath=page.media_subpath absolute=true %}
-      {%- endcapture -%}
 
-      {%- capture old_url -%}{{ src | absolute_url }}{%- endcapture -%}
-      {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap" rel="stylesheet">
 
-      {% assign seo_tags = seo_tags | replace: old_url, new_url %}
-    {% endunless %}
+    <link rel="stylesheet" href="{{"/assets/css/main.css" | absolute_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/mobile.css" | absolute_url }}">
 
-  {% elsif site.social_preview_image %}
-    {%- capture img_url -%}
-      {% include media-url.html src=site.social_preview_image absolute=true %}
-    {%- endcapture -%}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
-    {%- capture og_image -%}
-      <meta property="og:image" content="{{ img_url }}" />
-    {%- endcapture -%}
+        <!-- SEO Plugin -->
+        {% seo %}
 
-    {%- capture twitter_image -%}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:image" content="{{ img_url }}" />
-    {%- endcapture -%}
-
-    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
-    {% assign new_meta_clip = og_image | append: twitter_image %}
-    {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
-  {% endif %}
-
-  {{ seo_tags }}
-
-  <title>
-    {%- unless page.layout == 'home' -%}
-      {{ page.title | append: ' | ' }}
-    {%- endunless -%}
-    {{ site.title }}
-  </title>
-
-  {% include_cached favicons.html %}
-
-  <!-- Resource Hints -->
-  {% unless site.assets.self_host.enabled %}
-    {% for hint in site.data.origin.cors.resource_hints %}
-      {% for link in hint.links %}
-        <link rel="{{ link.rel }}" href="{{ hint.url }}" {{ link.opts | join: ' ' }}>
-      {% endfor %}
-    {% endfor %}
-  {% endunless %}
-
-  <!-- Bootstrap -->
-  {% unless jekyll.environment == 'production' %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  {% endunless %}
-
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}">
-
-  <!-- Web Font -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="{{ site.data.origin[type].fontawesome.css | relative_url }}">
-
-  <!-- 3rd-party Dependencies -->
-
-  {% if site.toc and page.toc %}
-    <link rel="stylesheet" href="{{ site.data.origin[type].toc.css | relative_url }}">
-  {% endif %}
-
-  {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'home' %}
-    <link rel="stylesheet" href="{{ site.data.origin[type]['lazy-polyfill'].css | relative_url }}">
-  {% endif %}
-
-  {% if page.layout == 'page' or page.layout == 'post' %}
-    <!-- Image Popup -->
-    <link rel="stylesheet" href="{{ site.data.origin[type].glightbox.css | relative_url }}">
-  {% endif %}
-
-  <!-- JavaScript -->
-
-  {% unless site.theme_mode %}
-    {% include mode-toggle.html %}
-  {% endunless %}
-
-  {% include metadata-hook.html %}
+        <!-- Google Analytics -->
+        {% if site.data.settings.analytics-id%}
+            {%- include analytics.html -%}
+        {% endif %}
+        <!-- End Google Analytics -->
 </head>
