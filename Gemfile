@@ -1,14 +1,11 @@
 # frozen_string_literal: true
 
 source "https://rubygems.org"
+
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
 gemspec
 
-gem 'jekyll'
-
-gem 'wdm', '>= 0.1.0'
-
-gem 'jekyll-paginate'
-gem 'jekyll-feed'
-gem 'jekyll-seo-tag'
-gem 'jekyll-sitemap'
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+group :test do
+  gem "html-proofer", "~> 5.0"
+end
