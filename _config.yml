@@ -113,7 +113,7 @@ analytics:
 # Site Author
 author:
   name             : "S3"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/avatar.png"
   bio              : "자세한 설명은 없습니다."
   location         : "Republic of Korea"
   email            : "ksywle2648@gmail.com"
