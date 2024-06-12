@@ -1,7 +1,7 @@
 ---
 title: "Machine Golf 개인정보처리방침"
 categories:
-  - 포스트
+  - 개인정보처리방침
 tags:
   - 개인정보처리방침
 
