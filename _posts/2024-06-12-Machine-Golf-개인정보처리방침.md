@@ -5,14 +5,13 @@ categories:
 tags:
   - 개인정보처리방침
 
-date: 2024-06-11
+date: 2024-06-12
 last_modified_at:
 comments: true
 ---
-
 **Privacy Policy**
 
-This privacy policy applies to the Machine Golf app (hereby referred to as "Application") for mobile devices that was created by o1i0 (hereby referred to as "Service Provider") as an Ad Supported service. This service is intended for use "AS IS".
+This privacy policy applies to the Machine Golf app (hereby referred to as "Application") for mobile devices that was created by O1I0 (hereby referred to as "Service Provider") as an Ad Supported service. This service is intended for use "AS IS".
 
 **Information Collection and Use**
 
@@ -41,6 +40,7 @@ Only aggregated, anonymized data is periodically transmitted to external service
 
 Please note that the Application utilizes third-party services that have their own Privacy Policy about handling data. Below are the links to the Privacy Policy of the third-party service providers used by the Application:
 
+*   [Google Play Services](https://www.google.com/policies/privacy/)
 *   [AdMob](https://support.google.com/admob/answer/6128543?hl=en)
 *   [Unity](https://unity3d.com/legal/privacy-policy)
 
@@ -72,7 +72,7 @@ The Service Provider is concerned about safeguarding the confidentiality of your
 
 This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
 
-This privacy policy is effective as of 2024-06-11
+This privacy policy is effective as of 2024-06-12
 
 **Your Consent**
 
