@@ -7,7 +7,7 @@ tags:
 
 date: 2024-06-12
 last_modified_at:
-comments: true
+comments: false
 ---
 **Privacy Policy**
 
